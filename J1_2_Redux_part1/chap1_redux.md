@@ -43,9 +43,40 @@ store.subscribe(() => console.log(store.getState().questions) ) ;
 
 ## 02 Exercice Redux & React
 
-Créez un petit projet pour ajouter un message avec Redux, mais cette fois vous allez utiliser React pour gérer le rendu dans le DOM. Attention, la gestion du store dans Redux est asynchrone.
+Créez un projet pour ajouter un message avec Redux et affichez ces messages dans le DOM à l'aide de React. Voir le wireframe ci-après
 
-Indication : n'utilisez pas le context API de React pour cet exercice pour essayez de globaliser le store.
+Indication : n'utilisez pas le context API de React pour cet exercice pour essayez de globaliser le store. Pour vous connectez à votre store Redux utiliser le code ci-dessous :
+
+```js
+
+store.subscribe(() => {
+  console.log(store.getState());
+  // on remonte l'arbre de React pour mettre jour les données dans le DOM
+  render();
+});
+
+const render = () =>
+  ReactDOM.render(
+    <App store={store} />
+    ,
+  document.getElementById("root")
+);
+
+// on départ on monte l'arbre 
+render();
+ ```
+ 
+ Wireframe
+ 
+ ```txt
+ 
+  Ajoutez un message : [ ... ]
+  
+  Les messages : 
+  Hello World 1
+  Hello World 2
+ 
+ ```
 
 
 ## Méthodes react-redux
