@@ -41,6 +41,13 @@ Pour écouter les changements du state on s'y abonnera à l'aide de la fonction 
 store.subscribe(() => console.log(store.getState().questions) ) ;
 ```
 
+## 02 Exercice Redux & React
+
+Créez un petit projet pour ajouter un message avec Redux, mais cette fois vous allez utiliser React pour gérer le rendu dans le DOM. Attention, la gestion du store dans Redux est asynchrone.
+
+Indication : n'utilisez pas le context API de React pour cet exercice pour essayez de globaliser le store.
+
+
 ## Méthodes react-redux
 
 Dans React nous pouvons globaliser le state de Redux et y accéder depuis n'importe quel composant.
