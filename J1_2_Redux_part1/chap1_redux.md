@@ -242,7 +242,7 @@ Voici le code du reducer que nous allons mettre en place :
 import { ADD_DRAGON } from '../constants/actions';
 
 // initialisation des states : SOURCE DE VERITE
-const stateInit = {
+const initialState = {
     dragons: [
         "Apalala",
         "Balaur",
@@ -250,18 +250,16 @@ const stateInit = {
     count: 0
 }
 
-let reducerDragon = (state = stateInit, action = {}) => {
+const reducerDragon = (state = initialState, action = {}) => {
     switch (action.type) {
         case ADD_DRAGON:
             // TODO
 
-            return { ...state, elems }
+            return { ...state }
 
         default:
             return state;
     }
-
-    return state
 }
 
 export default reducerDragon;
