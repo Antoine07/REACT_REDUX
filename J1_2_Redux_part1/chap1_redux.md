@@ -92,9 +92,7 @@ render();
 
 Dans React nous pouvons globaliser le state de Redux et y accéder depuis n'importe quel composant.
 
-Le module **react-redux** comporte principalement la méthode **connect** qui va faciliter l'accès au store pour lire le state de Redux (lecture seule) et déclencher les actions afin de le mettre à jour.
-
-Vous devez tout d'abord contextualiser l'application à l'aide du **Provider** de react-redux, c'est un préalable nécessaire pour utiliser connect :
+Vous devez tout d'abord contextualiser l'application à l'aide du **Provider** de react-redux, c'est un préalable nécessaire pour consommer le store dans l'arbre de React :
 
 ```js
 import { Provider } from 'react-redux';
