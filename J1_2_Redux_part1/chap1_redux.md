@@ -242,7 +242,7 @@ Voici le code du reducer que nous allons mettre en place :
 import { ADD_DRAGON } from '../constants/actions';
 
 // initialisation des states : SOURCE DE VERITE
-let stateInit = {
+const stateInit = {
     dragons: [
         "Apalala",
         "Balaur",
