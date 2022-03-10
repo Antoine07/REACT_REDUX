@@ -41,13 +41,58 @@ Pour écouter les changements du state on s'y abonnera à l'aide de la fonction 
 store.subscribe(() => console.log(store.getState().questions) ) ;
 ```
 
+## 02 Exercice Redux & React
+
+Créez un projet pour ajouter un message avec Redux et affichez ces messages dans le DOM à l'aide de React. Voir le wireframe ci-après
+
+Indication : n'utilisez pas le context API de React pour cet exercice pour essayez de globaliser le store. Pour vous connectez à votre store Redux utiliser le code ci-dessous :
+
+```js
+
+store.subscribe(() => {
+  console.log(store.getState());
+  // on remonte l'arbre de React pour mettre jour les données dans le DOM
+  render();
+});
+
+const render = () =>
+  ReactDOM.render(
+    <App store={store} />
+    ,
+  document.getElementById("root")
+);
+
+// on départ on monte l'arbre 
+render();
+ ```
+ 
+ Les liens pour React, Redux et Babel
+ 
+ ```html
+  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+```
+ 
+ Wireframe
+ 
+ ```txt
+ 
+  Ajoutez un message : [ ... ]
+  
+  Les messages : 
+  Hello World 1
+  Hello World 2
+ 
+ ```
+
+
 ## Méthodes react-redux
 
 Dans React nous pouvons globaliser le state de Redux et y accéder depuis n'importe quel composant.
 
-Le module **react-redux** comporte principalement la méthode **connect** qui va faciliter l'accès au store pour lire le state de Redux (lecture seule) et déclencher les actions afin de le mettre à jour.
-
-Vous devez tout d'abord contextualiser l'application à l'aide du **Provider** de react-redux, c'est un préalable nécessaire pour utiliser connect :
+Vous devez tout d'abord contextualiser l'application à l'aide du **Provider** de react-redux, c'est un préalable nécessaire pour consommer le store dans l'arbre de React :
 
 ```js
 import { Provider } from 'react-redux';
@@ -197,7 +242,7 @@ Voici le code du reducer que nous allons mettre en place :
 import { ADD_DRAGON } from '../constants/actions';
 
 // initialisation des states : SOURCE DE VERITE
-let stateInit = {
+const initialState = {
     dragons: [
         "Apalala",
         "Balaur",
@@ -205,18 +250,16 @@ let stateInit = {
     count: 0
 }
 
-let reducerDragon = (state = stateInit, action = {}) => {
+const reducerDragon = (state = initialState, action = {}) => {
     switch (action.type) {
         case ADD_DRAGON:
             // TODO
 
-            return { ...state, elems }
+            return { ...state }
 
         default:
             return state;
     }
-
-    return state
 }
 
 export default reducerDragon;
