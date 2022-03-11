@@ -1,4 +1,4 @@
-import { ADD_DRAGON, SET_DRAGON } from '../constants/actions';
+import { ADD_DRAGON, SET_DRAGON, REMOVE_DRAGON, REVERSE_DRAGON} from '../constants/actions';
 
 // initialisation des states : SOURCE DE VERITE
 const initialState = {
@@ -24,8 +24,16 @@ const reducerDragon = (state = initialState, action = {}) => {
             }
 
         case ADD_DRAGON:
+            return { ...state, dragons: [...state.dragons, action.payload] }
 
-            return { ...state }
+        case REMOVE_DRAGON:
+            const dragonsFiltered = state.dragons.filter((d, i) => i !== action.payload);
+            return {...state, dragons: dragonsFiltered};
+
+        case REVERSE_DRAGON:
+            const reversedDragons = [...state.dragons];
+            reversedDragons.reverse();
+            return { ...state, dragons: reversedDragons}
 
         default:
             return state;

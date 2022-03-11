@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setDragon } from '../actions/actions-types';
+import { addDragon, setDragon } from '../actions/actions-types';
 
 function Form() {
     const { dragon  } = useSelector(state => state) ;
@@ -12,7 +12,8 @@ function Form() {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // TODO
+        if (dragon.trim().length > 0)
+            dispatch(addDragon(dragon))
     }
 
     return (
