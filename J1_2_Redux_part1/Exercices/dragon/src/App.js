@@ -1,4 +1,6 @@
 import { useSelector} from 'react-redux';
+import Dragon from './components/Dragon';
+import Form from './components/Form';
 
 function App() {
   const { dragons } = useSelector(state => state);
@@ -6,8 +8,9 @@ function App() {
   console.log(dragons);
 
   return (
-    <div >
-     HELLO WORLD
+    <div>
+      <Dragon />
+      <Form />
     </div>
   );
 }
